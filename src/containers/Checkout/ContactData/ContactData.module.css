@@ -1,0 +1,28 @@
+.ContactData {
+  margin: 16px;
+  text-align: center;
+  padding: 16px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.15);
+  border-radius: 16px;
+  background-color: #fff;
+  max-width: 960px;
+}
+
+.ContactData h4 {
+  margin: 8px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+@media (min-width: 550px) {
+  .ContactData h4 {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 992px) {
+  .ContactData {
+    margin: 16px auto;
+  }
+}

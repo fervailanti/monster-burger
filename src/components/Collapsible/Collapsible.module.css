@@ -1,0 +1,29 @@
+.Collapsible {
+  border-bottom: 1px solid #ccc;
+  padding: 16px 8px;
+}
+
+.CollapsibleTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.CollapsibleTitle p {
+  margin: 4px 0px;
+}
+
+.CollapsibleTitle img {
+  height: 16px;
+  transition: transform 0.5s ease;
+}
+
+.CollapsibleContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  text-align: left;
+}

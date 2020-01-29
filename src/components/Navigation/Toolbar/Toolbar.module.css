@@ -1,0 +1,33 @@
+.Toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  z-index: 90;
+  background-color: #fff;
+  box-shadow: 0px 0px 24px 4px rgba(0,0,0,0.25);
+}
+
+.Toolbar h1 {
+  font-family: 'Homemade Apple', cursive;
+  margin: 0;
+  font-size: 16px;
+  margin-left: 16px;
+}
+
+@media (max-width: 549px) {
+  .DesktopOnly {
+    display: none;
+  }
+
+  .Toolbar h1 {
+    line-height: 32px;
+    margin-left: 0px;
+  }
+}
+
+@media (min-width: 550px) {
+  .MobileOnly {
+    display: none;
+  }
+}

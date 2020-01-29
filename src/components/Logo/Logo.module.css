@@ -1,0 +1,14 @@
+.Logo {
+  display: flex;
+}
+
+.Logo img {
+  height: 28px;
+}
+
+@media (min-width: 550px) {
+  .Logo img {
+    height: 32px;
+    margin-bottom: 6px;
+  }
+}

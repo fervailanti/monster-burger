@@ -1,0 +1,17 @@
+.EmptyState {
+  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.EmptyState img {
+  width: 80px;
+  margin-bottom: 8px;
+}
+
+.EmptyState p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #bbb;
+}

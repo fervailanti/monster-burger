@@ -1,0 +1,154 @@
+.BreadBottom {
+  height: 36px;
+  width: 240px;
+  background: #F29C20;
+  border-radius: 4px 4px 18% 18% / 4px 4px 80% 80%;
+  box-shadow: inset -18px 0 #E88523;
+  margin: 2px;
+}
+
+.BreadTop {
+  height: 54px;
+  width: 240px;
+  background: #F29C20;
+  border-radius: 50% 50% 4px 4px / 80% 80% 4px 4px;
+  box-shadow: inset -18px 0 #E88523;
+  margin: 2px;
+  position: relative;
+}
+
+.Seeds1 {
+  width: 6%;
+  height: 15%;
+  position: absolute;
+  background-color: #E88523;
+  left: 30%;
+  top: 55%;
+  border-radius: 40%;
+  transform: rotate(-20deg);
+}
+
+.Seeds1:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #E88523;
+  left: -170%;
+  top: -260%;
+  border-radius: 40%;
+  transform: rotate(60deg);
+}
+  
+.Seeds1:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #E88523;
+  left: 180%;
+  top: -50%;
+  border-radius: 40%;
+  transform: rotate(60deg);
+}
+
+.Seeds2 {
+  width: 6%;
+  height: 15%;
+  position: absolute;
+  background-color: #E88523;
+  left: 60%;
+  top: 50%;
+  margin: 2px;
+  border-radius: 40%;
+  transform: rotate(10deg);
+}
+  
+.Seeds2:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #E88523;
+  left: 150%;
+  top: -130%;
+  border-radius: 40%;
+  transform: rotate(90deg);
+}
+  
+
+.Meat {
+  width: 240px;
+  height: 26px;
+  background: #7f3608;
+  margin: 2px;
+  border-radius: 8px;
+  box-shadow: inset -18px 0 #6d2c03;
+}
+
+.Cheese {
+  width: 252px;
+  height: 14px;
+  margin: 2px;
+  background: #f4d004;
+  box-shadow: inset -18px 0 #e0c321;
+  border-radius: 20px;
+}
+
+.Salad {
+  width: 250px;
+  height: 16px;
+  margin: 2px;
+  background: #5CAC56;
+  border-radius: 20px;
+  box-shadow: inset -18px 0 #499c43;
+}
+
+.Bacon {
+  width: 240px;
+  height: 12px;
+  background: linear-gradient(#FF5264, #c45e38);
+  box-shadow: inset -18px 0 #b9532d;
+  margin: 2px;
+  border-radius: 4px;
+}
+
+@media (max-width: 549px) {
+  .BreadBottom {
+    height: 20px;
+    width: 112px;
+    margin: 1px;
+  }
+  
+  .BreadTop {
+    height: 24px;
+    width: 112px;
+    margin: 1px;
+  }
+
+  .Meat {
+    width: 112px;
+    height: 14px;
+    margin: 1px;
+    border-radius: 4px;
+  }
+  
+  .Cheese {
+    width: 114px;
+    height: 6px;
+    margin: 1px;
+  }
+  
+  .Salad {
+    width: 114px;
+    height: 7px;
+    margin: 1px;
+  }
+  
+  .Bacon {
+    width: 112px;
+    height: 6px;
+    margin: 1px;
+    border-radius: 2px;
+  }
+}

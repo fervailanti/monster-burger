@@ -1,0 +1,64 @@
+.Input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.Label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+.InputElement {
+  outline: none;
+  border: none;
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 16px;
+  display: flex;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.InputElement::placeholder {
+  color: #bbb;
+}
+
+.InputElement:focus {
+  outline: none;
+  background-color: #ddd;
+}
+
+.InputElement:focus::placeholder {
+  color: #bbb;
+}
+
+.Invalid {
+  background-color: #ff8c8c80;
+}
+
+.Invalid::placeholder{
+  color: #ff8c8c;
+}
+
+.InvalidMessage {
+  font-weight: 500;
+  color: #ff8c8c;
+  margin-left: 4px;
+}
+
+@media (max-width: 549px) {
+  .Label {
+    font-size: 14px;
+  }
+
+  .InputElement {
+    font-size: 14px;
+  }
+}

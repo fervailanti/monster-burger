@@ -2,6 +2,10 @@
 Build your dream burger... 🍔
 <br/>
 <br/>
+<br/>
+![](monster-burger.gif)
+<br/>
+<br/>
 
 ## Available Scripts
 

@@ -56,8 +56,7 @@ const Input = ({
         />
       )
     }
-    const typesList = Object.keys(types)
-    return typesList.includes(type) ? types[type]() : types['default']()
+    return types.hasOwnProperty(type) ? types[type]() : types['default']()
   }
 
   return (

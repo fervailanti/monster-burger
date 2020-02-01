@@ -5,7 +5,7 @@ import arrow from '../../assets/images/arrow.svg'
 const Collapsible = props => {
 
   const [expanded, setExpanded] = useState(false)
-  const [contentHeight, setContentHeight] = useState("0px");
+  const [contentHeight, setContentHeight] = useState("0px")
 
   const content = useRef(null);
 

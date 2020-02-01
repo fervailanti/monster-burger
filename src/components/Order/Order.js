@@ -1,12 +1,9 @@
 import React from 'react'
 import classes from './Order.module.css'
 import Collapsible from '../Collapsible/Collapsible'
-import salad from '../../assets/images/salad.svg'
-import bacon from '../../assets/images/bacon.svg'
-import cheese from '../../assets/images/cheese.svg'
-import meat from '../../assets/images/meat.svg'
 import translateBurgerName from '../../helpers/translateBurgerName' 
 import Burger from '../Burger/Burger'
+import { images } from '../../assets/images'
 
 const Order = props => {
 
@@ -14,19 +11,19 @@ const Order = props => {
     const ingredients = {
       bacon: {
         title: 'Panceta',
-        icon: bacon
+        icon: images.ingredients.bacon
       },
       cheese: {
         title: 'Queso',
-        icon: cheese
+        icon: images.ingredients.cheese
       },
       meat: {
         title: 'Carne',
-        icon: meat
+        icon: images.ingredients.meat
       },
       salad: {
         title: 'Ensalada',
-        icon: salad
+        icon: images.ingredients.salad
       },
     }
     return ingredients[ingredient][type]

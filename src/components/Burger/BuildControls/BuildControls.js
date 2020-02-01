@@ -5,6 +5,7 @@ import salad from '../../../assets/images/salad.svg'
 import bacon from '../../../assets/images/bacon.svg'
 import cheese from '../../../assets/images/cheese.svg'
 import meat from '../../../assets/images/meat.svg'
+import translateBurgerName from '../../../helpers/translateBurgerName'
 
 const controls = [
   {
@@ -39,7 +40,12 @@ const BuildControls = ({
   ingredients
 }) => (
   <div className={classes.BuildControls}>
-    <p>Precio total <strong>${totalPrice.toFixed(2)}</strong></p>
+    <p style={{fontWeight: '600'}}>
+      {translateBurgerName(ingredients)}
+    </p>
+    <p>
+      Precio total <strong>${totalPrice.toFixed(2)}</strong>
+    </p>
     {controls.map(e => (
       <BuildControl 
         key={e.label} 

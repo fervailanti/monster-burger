@@ -7,6 +7,12 @@
   padding: 16px;
 }
 
+.Small {
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
 .Burger {
   display: flex;
   flex-direction: column;

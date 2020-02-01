@@ -8,7 +8,7 @@ import axios from '../../axios-orders'
 import Loader from '../../components/Loader/Loader'
 import WithError from '../../hoc/WithError'
 
-const BurguerBuilder = props => {
+const BurgerBuilder = props => {
 
   const INGREDIENT_PRICES = {
     meat: 1.3,
@@ -123,4 +123,4 @@ const BurguerBuilder = props => {
   )
 }
 
-export default BurguerBuilder
+export default BurgerBuilder

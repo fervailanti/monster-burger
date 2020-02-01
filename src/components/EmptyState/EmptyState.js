@@ -1,10 +1,10 @@
 import React from 'react'
 import classes from './EmptyState.module.css'
-import crying from '../../assets/images/crying.svg'
+import { images } from '../../assets/images'
 
 const EmptyState = props => (
   <div className={classes.EmptyState}>
-    <img src={crying} alt='Llorando'/>
+    <img src={images.crying} alt='Llorando'/>
     <p>{props.text}</p>
   </div>
 )

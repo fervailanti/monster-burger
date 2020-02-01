@@ -1,7 +1,6 @@
 import React from 'react'
 import classes from './BuildControl.module.css'
-import minus from '../../../../assets/images/minus.svg'
-import plus from '../../../../assets/images/plus.svg'
+import { images } from '../../../../assets/images'
 
 const BuildControl = ({ label, counter, addIngredient, removeIngredient, disabled, icon}) => (
   <div className={classes.BuildControl}>
@@ -10,10 +9,10 @@ const BuildControl = ({ label, counter, addIngredient, removeIngredient, disable
       {label} <strong>{counter}</strong>
     </div>
     <button onClick={removeIngredient} disabled={disabled}>
-      <img src={minus} alt='less'/>
+      <img src={images.utility.minus} alt='less'/>
     </button>
     <button onClick={addIngredient}>
-      <img src={plus} alt='more'/>
+      <img src={images.utility.plus} alt='more'/>
     </button>
   </div>
 )

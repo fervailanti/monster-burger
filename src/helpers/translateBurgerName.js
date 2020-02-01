@@ -1,4 +1,4 @@
-const translateBurgerName = ings => {
+export const translateBurgerName = ings => {
 
   const bacon = ings.bacon > 0
   const cheese = ings.cheese > 0
@@ -77,5 +77,3 @@ const translateBurgerName = ings => {
     inedible()
   ].join(' ')
 }
-
-export default translateBurgerName

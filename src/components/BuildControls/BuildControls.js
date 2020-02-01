@@ -1,8 +1,8 @@
 import React from 'react'
 import classes from './BuildControls.module.css'
 import BuildControl from './BuildControl/BuildControl'
-import translateBurgerName from '../../../helpers/translateBurgerName'
-import { images } from '../../../assets/images'
+import { images } from '../../assets/images'
+import { translateBurgerName } from '../../helpers/translateBurgerName'
 
 const controls = [
   {

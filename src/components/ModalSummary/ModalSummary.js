@@ -1,9 +1,9 @@
 import React from 'react'
-import Aux from '../../hoc/Aux'
+import Aux from '../../components/Aux/Aux'
 import Button from '../Button/Button'
-import classes from './OrderSummary.module.css'
+import classes from './ModalSummary.module.css'
 
-const OrderSummary = ({ ingredients, cancel, accept, price }) => {
+const ModalSummary = ({ ingredients, cancel, accept, price }) => {
 
   const translateIngredients = ingredient => {
     const ingredients = {
@@ -23,7 +23,7 @@ const OrderSummary = ({ ingredients, cancel, accept, price }) => {
   ))
   return (
     <Aux>
-      <div className={classes.OrderSummary}>
+      <div className={classes.ModalSummary}>
         <h3>Tu orden</h3>
         <p>Una hamburguesa con los siguientes ingredientes:</p>
         <ul>
@@ -47,4 +47,4 @@ const OrderSummary = ({ ingredients, cancel, accept, price }) => {
   )
 }
 
-export default OrderSummary
+export default ModalSummary

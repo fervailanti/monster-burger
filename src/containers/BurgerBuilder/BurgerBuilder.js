@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import Aux from '../../hoc/Aux'
+import Aux from '../../components/Aux/Aux'
 import Burger from '../../components/Burger/Burger'
-import BuildControls from '../../components/Burger/BuildControls/BuildControls'
+import BuildControls from '../../components/BuildControls/BuildControls'
 import Modal from '../../components/Modal/Modal'
-import OrderSummary from '../../components/OrderSummary/OrderSummary'
+import ModalSummary from '../../components/ModalSummary/ModalSummary'
 import axios from '../../axios-orders'
 import Loader from '../../components/Loader/Loader'
-import WithError from '../../hoc/WithError'
+import WithError from '../../components/WithError/WithError'
 
 const BurgerBuilder = props => {
 
@@ -83,7 +83,7 @@ const BurgerBuilder = props => {
     disabled[key] = disabled[key] <= 0
   }
 
-  const orderSummary = ingredients && <OrderSummary
+  const orderSummary = ingredients && <ModalSummary
     ingredients={ingredients}
     cancel={() => setPurchasing(false)}
     accept={orderBurger}

@@ -1,9 +1,9 @@
 import React from 'react'
 import classes from './Order.module.css'
 import Collapsible from '../Collapsible/Collapsible'
-import translateBurgerName from '../../helpers/translateBurgerName' 
 import Burger from '../Burger/Burger'
 import { images } from '../../assets/images'
+import { translateBurgerName}  from '../../helpers/translateBurgerName' 
 
 const Order = props => {
 

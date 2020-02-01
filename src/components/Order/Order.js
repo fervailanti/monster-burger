@@ -3,7 +3,7 @@ import classes from './Order.module.css'
 import Collapsible from '../Collapsible/Collapsible'
 import Burger from '../Burger/Burger'
 import { images } from '../../assets/images'
-import { translateBurgerName}  from '../../helpers/translateBurgerName' 
+import { translateBurgerName }  from '../../helpers/translateBurgerName' 
 
 const Order = props => {
 

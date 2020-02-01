@@ -36,7 +36,8 @@ const Orders = () => {
       <div className={classes.OrdersContainer}>
         <h2>Tus últimos pedidos:</h2>
         <div className={classes.Orders}>
-          {ordersList.length > 0 ? ordersList.map(order => <Order
+          {ordersList.length > 0 ? ordersList.map((order, index) => <Order
+            number={index+1}
             key={order.id}
             ingredients={order.ingredients}
             details={order.orderData}

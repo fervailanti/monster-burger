@@ -5,6 +5,8 @@ import salad from '../../assets/images/salad.svg'
 import bacon from '../../assets/images/bacon.svg'
 import cheese from '../../assets/images/cheese.svg'
 import meat from '../../assets/images/meat.svg'
+import translateBurgerName from '../../helpers/translateBurgerName' 
+import Burger from '../Burger/Burger'
 
 const Order = props => {
 
@@ -71,8 +73,7 @@ const Order = props => {
       fast: 'Rápido',
       normal: 'Normal'
     }
-    const deliveryMethodsList = Object.keys(deliveryMethods)
-    return deliveryMethodsList.includes(value) ? deliveryMethods[value] : value
+    return deliveryMethods.hasOwnProperty(value) ? deliveryMethods[value] : value
   }
 
   const detailsOutput = details.map(e => (
@@ -84,6 +85,15 @@ const Order = props => {
   
   return (
     <div className={classes.Order}>
+      <p style={{fontWeight: '300',margin:0}}>
+        Pedido #{props.number}
+      </p>
+      <p style={{margin:0}}>
+        <strong>{translateBurgerName(props.ingredients)}</strong>
+      </p>
+      <div>
+        <Burger ingredients={props.ingredients} small />
+      </div>
       <Collapsible
         title='Ingredientes'
         content={ingredientOutput}

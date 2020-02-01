@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import classes from './Collapsible.module.css'
-import arrow from '../../assets/images/arrow.svg'
+import { images } from '../../assets/images'
 
 const Collapsible = props => {
 
@@ -26,7 +26,7 @@ const Collapsible = props => {
       }}>
         <p>{props.title}</p>
         <img 
-          src={arrow}
+          src={images.utility.arrow}
           alt={expanded ? 'Ver más' : 'Ver menos'}
           style={{
             transform: expanded && 'rotate(180deg)'

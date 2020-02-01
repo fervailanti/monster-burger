@@ -3,7 +3,7 @@ import Order from '../../components/Order/Order'
 import axios from '../../axios-orders'
 import classes from './Orders.module.css'
 import Loader from '../../components/Loader/Loader'
-import WithError from '../../hoc/WithError'
+import WithError from '../../components/WithError/WithError'
 import EmptyState from '../../components/EmptyState/EmptyState'
 
 const Orders = () => {

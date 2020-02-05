@@ -88,7 +88,7 @@ const Order = props => {
       <p style={{margin:0}}>
         <strong>{translateBurgerName(props.ingredients)}</strong>
       </p>
-      <div>
+      <div style={{margin: '12px 0 4px'}}>
         <Burger ingredients={props.ingredients} small />
       </div>
       <Collapsible

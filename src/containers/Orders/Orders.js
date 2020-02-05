@@ -1,59 +1,50 @@
-import React, { useEffect, useState  } from 'react'
+import React, { useEffect } from 'react'
 import Order from '../../components/Order/Order'
-import axios from '../../axios-orders'
 import classes from './Orders.module.css'
 import Loader from '../../components/Loader/Loader'
 import WithError from '../../components/WithError/WithError'
 import EmptyState from '../../components/EmptyState/EmptyState'
+import { connect } from 'react-redux'
+import { fetchOrders } from '../../store/actions/'
+import { fixPrice } from '../../helpers/utility'
 
-const Orders = () => {
+const Orders = props => {
 
-  const [ordersList, setOrdersList] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+  const { fetchOrders } = props
 
-  useEffect(() => {
-    axios.get('/orders.json')
-      .then(res => {
-        const fetchedOrders = []
-        for (let key in res.data) {
-          fetchedOrders.push({
-            ...res.data[key],
-            id: key
-          })
-        }
-        setOrdersList(fetchedOrders)
-        setLoading(false)
-      })
-      .catch(error => {
-        setError(true)
-        setLoading(false)
-      })
-  }, [])
+  useEffect(() => fetchOrders(), [fetchOrders])
 
-  const orders = {
-    success: (
+  const renderOrders = {
+    success: () => (
       <div className={classes.OrdersContainer}>
         <h2>Tus últimos pedidos:</h2>
         <div className={classes.Orders}>
-          {ordersList.length > 0 ? ordersList.map((order, index) => <Order
+          {props.orders.length > 0 ? props.orders.map((order, index) => <Order
             number={index+1}
             key={order.id}
             ingredients={order.ingredients}
             details={order.orderData}
-            price={order.price}
+            price={fixPrice(order.price)}
           />) : <EmptyState text='¡Ups! Parece que aún no has hecho ningún pedido'/>}
         </div>
       </div>
     ),
-    loading: (
-      <Loader />
-    )
+    loading: () => <Loader />
   }
 
-  return loading ? orders.loading : <WithError error={error}>
-    {orders.success}
+  return <WithError error={props.error}>
+    {props.loading ? renderOrders.loading() : renderOrders.success()}
   </WithError>
 }
 
-export default Orders
+const mapStateToProps = state => ({
+  orders: state.orders.ordersList,
+  loading: state.orders.loading,
+  error: state.orders.error
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchOrders: () => dispatch(fetchOrders())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Orders)

@@ -29,7 +29,7 @@ const ModalSummary = ({ ingredients, cancel, accept, price }) => {
         <ul>
           {ingredientSummary}
         </ul>
-        <p><strong>Precio total: {'$'+price.toFixed(2)}</strong></p>
+        <p><strong>Precio total: {'$'+price}</strong></p>
         <Button
           buttonType='Ghost'
           buttonClick={cancel}

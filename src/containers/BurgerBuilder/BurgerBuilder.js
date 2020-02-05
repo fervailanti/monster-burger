@@ -4,117 +4,71 @@ import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/BuildControls/BuildControls'
 import Modal from '../../components/Modal/Modal'
 import ModalSummary from '../../components/ModalSummary/ModalSummary'
-import axios from '../../axios-orders'
 import Loader from '../../components/Loader/Loader'
+import { fixPrice } from '../../helpers/utility'
 import WithError from '../../components/WithError/WithError'
+import { connect } from 'react-redux'
+import { addIngredient, removeIngredient, fetchIngredients } from '../../store/actions/'
+
 
 const BurgerBuilder = props => {
 
-  const INGREDIENT_PRICES = {
-    meat: 1.3,
-    bacon: 0.7,
-    salad: 0.5,
-    cheese: 0.4
-  }
+  const { fetchIngredients } = props
 
-  const [ingredients, setIngredients] = useState()
-  const [totalPrice, setPrice] = useState(4)
-  const [purchasable, setPurchasable] = useState(false)
+  useEffect(() => fetchIngredients(), [fetchIngredients])
+
   const [purchasing, setPurchasing] = useState(false)
-  const [error, setError] = useState(false)
 
-  useEffect(() => {
-    axios.get('/ingredients.json')
-      .then(response => {
-        setIngredients(response.data)
-      })
-      .catch(error => {
-        setError(true)
-        console.log(error)
-      })
-  }, [])
-
-  const updatePurchasable = updatedIngredients => {
+  const updatePurchasable = ings => {
     let sum = 0
-    for (let key in updatedIngredients) {
-      sum = sum + updatedIngredients[key]
+    for (let key in ings) {
+      sum = sum + ings[key]
     }
-    setPurchasable(sum > 0);
-  }
-
-  const addIngredient = type => {
-    const newIngredients = {
-      ...ingredients,
-      [type]: ingredients[type] + 1
-    }
-    setIngredients({ ...newIngredients }) 
-    setPrice(totalPrice + INGREDIENT_PRICES[type])
-    updatePurchasable(newIngredients)
-  }
-
-  const removeIngredient = type => {
-    const newIngredients = {
-      ...ingredients,
-      [type]: ingredients[type] - 1
-    }
-    setIngredients({ ...newIngredients })
-    setPrice(totalPrice - INGREDIENT_PRICES[type])
-    updatePurchasable(newIngredients)
+    return sum > 0
   }
 
   const orderBurger = () => {
-    const queryParams = []
-    for (let i in ingredients) {
-      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(ingredients[i]))
-    }
-    queryParams.push('price=' + totalPrice.toFixed(2))
-    const queryString = queryParams.join('&')
-    props.history.push({
-      pathname: '/checkout',
-      search: '?' + queryString
-    })
+    props.history.push('/checkout')
   }
 
   const disabled = {
-    ...ingredients
+    ...props.ingredients
   }
 
   for (let key in disabled) {
     disabled[key] = disabled[key] <= 0
   }
 
-  const orderSummary = ingredients && <ModalSummary
-    ingredients={ingredients}
+  const orderSummary = props.ingredients && <ModalSummary
+    ingredients={props.ingredients}
     cancel={() => setPurchasing(false)}
     accept={orderBurger}
-    price={totalPrice}
+    price={fixPrice(props.price)}
   />
 
   const burger = () => {
-    const cases = {
-      success: (
+    const options = {
+      burger: () => (
         <Aux>
-          <Burger ingredients={ingredients}/>
+          <Burger ingredients={props.ingredients}/>
           <BuildControls 
-            addIngredient={addIngredient}
-            removeIngredient={removeIngredient}
+            addIngredient={props.addIngredient}
+            removeIngredient={props.removeIngredient}
             disabled={disabled}
-            totalPrice={totalPrice}
-            purchasable={purchasable}
+            price={fixPrice(props.price)}
+            purchasable={updatePurchasable(props.ingredients)}
             orderClick={() => setPurchasing(true)}
-            ingredients={ingredients}
+            ingredients={props.ingredients}
           />
         </Aux>
       ),
-      loading: ( 
-        <Loader /> 
-      )
+      loading: () => <Loader />
     }
-    return ingredients ? cases.success : cases.loading
+    return props.loading ? options.loading() : options.burger()
   }
 
   return (
-    <WithError error={error}>
+    <WithError error={props.error}>
       <Modal show={purchasing} closeModal={() => setPurchasing(false)}>
         {orderSummary}
       </Modal>
@@ -123,4 +77,17 @@ const BurgerBuilder = props => {
   )
 }
 
-export default BurgerBuilder
+const mapStateToProps = state => ({
+  ingredients: state.burger.ingredients,
+  price: state.burger.price,
+  loading: state.burger.loading,
+  error: state.burger.error
+})
+
+const mapDispatchToProps = dispatch => ({
+  addIngredient: (ing) => dispatch(addIngredient(ing)),
+  removeIngredient: (ing) => dispatch(removeIngredient(ing)),
+  fetchIngredients: () => dispatch(fetchIngredients())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BurgerBuilder)

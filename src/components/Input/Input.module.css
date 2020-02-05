@@ -1,63 +1,58 @@
 .Input {
   width: 100%;
-  padding: 8px;
+  margin: 16px 0px;
   box-sizing: border-box;
   text-align: left;
 }
 
+.Row {
+  width: 50%;
+  display: inline-block;
+  margin: 0;
+}
+
 .Label {
-  font-weight: 600;
+  font-size: 12px;
+  color: #888;
   display: block;
-  margin-bottom: 8px;
-  margin-left: 8px;
 }
 
 .InputElement {
+  -webkit-appearance: none;
   outline: none;
-  border: none;
-  background-color: #eee;
-  border-radius: 8px;
-  padding: 8px;
+  border: inherit;
+  background-color: transparent;
+  padding: 4px 0px;
   width: 100%;
   box-sizing: border-box;
   font-family: inherit;
   font-size: 16px;
   display: flex;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+  border-bottom: 1px solid #bbb;
+  border-radius: inherit;
 }
 
 .InputElement::placeholder {
-  color: #bbb;
+  color: #ccc;
+  font-weight: 300;
 }
 
 .InputElement:focus {
   outline: none;
-  background-color: #ddd;
-}
-
-.InputElement:focus::placeholder {
-  color: #bbb;
-}
-
-.Invalid {
-  background-color: #ff8c8c80;
+  border-bottom: 1px solid rgb(128, 48, 48);
 }
 
 .Invalid::placeholder{
-  color: #ff8c8c;
+  color: #ff8c8caa;
 }
 
 .InvalidMessage {
-  font-weight: 500;
   color: #ff8c8c;
   margin-left: 4px;
 }
 
 @media (max-width: 549px) {
-  .Label {
-    font-size: 14px;
-  }
-
   .InputElement {
     font-size: 14px;
   }

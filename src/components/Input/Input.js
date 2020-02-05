@@ -8,11 +8,15 @@ const Input = ({
   elementType,
   elementChange,
   valid,
-  touched
+  touched,
+  configStyle
 }) => {
 
   const inputClasses = [classes.InputElement]
   !valid && touched && inputClasses.push(classes.Invalid)
+
+  const left = configStyle.position === 'left'
+  const right = configStyle.position === 'right' 
 
   const invalidMessage = !valid && touched && '*'
 
@@ -60,7 +64,9 @@ const Input = ({
   }
 
   return (
-    <div className={classes.Input}>
+    <div className={[classes.Input, configStyle.row && classes.Row].join(' ')} style={{
+      padding: left ? '0 12px 0 0' : right ? '0 0 0 12px' : '0'
+    }}>
       <label className={classes.Label}>
         {label} <span className={classes.InvalidMessage}>{invalidMessage}</span>
       </label>

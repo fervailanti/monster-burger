@@ -31,7 +31,7 @@ const BuildControls = ({
   addIngredient, 
   removeIngredient, 
   disabled, 
-  totalPrice, 
+  price, 
   purchasable, 
   orderClick,
   ingredients
@@ -41,7 +41,7 @@ const BuildControls = ({
       {translateBurgerName(ingredients)}
     </p>
     <p>
-      Precio total <strong>${totalPrice.toFixed(2)}</strong>
+      Precio total <strong>${price}</strong>
     </p>
     {controls.map(e => (
       <BuildControl 

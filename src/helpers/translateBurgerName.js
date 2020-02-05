@@ -1,79 +1,54 @@
-export const translateBurgerName = ings => {
-
-  const bacon = ings.bacon > 0
-  const cheese = ings.cheese > 0
-  const salad = ings.salad > 0
-  const meat = ings.meat > 0
-
-  const complete = () => {
-    const isComplete = bacon && cheese && salad && meat
-    return isComplete ? 'Completa' : ''
-  }
-
-  const stacker = () => {
-    const isStacker = bacon && meat && !salad
-    const isMilky = isStacker && cheese
-    return [
-      isStacker ? 'Stacker' : '', 
-      isMilky ? 'Con Queso' : ''
-    ].join(' ')
-  }
-
-  const meatCounter = (meatQty) => {
-    const options = {
-      0: '',
-      1: 'Simple',
-      2: 'Doble',
-      3: 'Triple',
-      4: 'Cuádruple',
-      5: 'Monstruosa'
-    }
-    return options.hasOwnProperty(meatQty.toString()) ? options[meatQty] : options[5]
-  }
-
-  const meatOnly = () => {
-    const isMeatOnly = !bacon && !cheese && !salad && meat
-    return isMeatOnly ? '(Solo Carne)' : ''
-  }
-
-  const cheeseOnly = () => {
-    const isCheeseOnly = !bacon && !salad && cheese
-    return isCheeseOnly ? '(Solo Queso)' : ''
-  }
-
-  const light = () => {
-    const isAntiLight = salad && meat && bacon && !cheese
-    const isLight = salad && meat && !bacon
-    const isMilky = isLight && cheese
-    return [
-      isAntiLight ? 'Anti-Light' : '',
-      isLight ? 'Light' : '',
-      isMilky ? 'Con Queso' : ''
-    ].join(' ')
-  }
-
-  const veggie = () => {
-    const isVeggie = salad && !meat && !bacon
-    const isMilky = isVeggie && cheese
-    return [
-      isVeggie ? 'Veggie' : '',
-      isMilky ? 'Con Queso' : ''
-    ].join(' ')
-  }
-
-  const inedible = () => {
-    const isInedible = bacon && !meat
-    return isInedible ? 'Incomible' : ''
-  }
-
-  return [
-    complete(),
-    stacker(),
-    light(),
-    meatCounter(ings.meat),
-    meatOnly(),
-    cheeseOnly(),
-    veggie(),
-    inedible()
-  ].join(' ')
+const complete = ings => {
+  const complete = ings.bacon && ings.cheese && ings.salad && ings.meat && 'Completa'
+  return [complete].filter(Boolean)
 }
+
+const stacker = ings => {
+  const stacker = ings.bacon && ings.meat && !ings.salad && 'Stacker'
+  const milky = stacker && ings.cheese && 'Con Queso'
+  return [stacker, milky].filter(Boolean).join(' ')
+}
+
+const meatCounter = ings => {
+  const [text = 'Monstruosa'] = [["", "Simple", "Doble", "Triple", "Cuádruple"][ings.meat]];
+  return text
+}
+
+const meatOnly = ings => {
+  const meatOnly = !ings.bacon && !ings.cheese && !ings.salad && ings.meat && '(Solo Carne)'
+  return [meatOnly].filter(Boolean)
+}
+
+const cheeseOnly = ings => {
+  const cheeseOnly = !ings.bacon && !ings.salad && ings.cheese && '(Solo Queso)'
+  return [cheeseOnly].filter(Boolean)
+}
+
+const light = ings => {
+  const antiLight = ings.salad && ings.meat && ings.bacon && !ings.cheese && 'Anti-Light'
+  const light = ings.salad && ings.meat && !ings.bacon && 'Light'
+  const milky = light && ings.cheese && 'Con Queso'
+  return [antiLight, light, milky].filter(Boolean).join(' ')
+}
+
+const veggie = ings => {
+  const veggie = ings.salad && !ings.meat && !ings.bacon && 'Veggie'
+  const milky = veggie && ings.cheese && 'Con Queso'
+  return [veggie,milky].filter(Boolean).join(' ')
+}
+
+const inedible = ings => {
+  const inedible = ings.bacon && !ings.meat && 'Incomible'
+  return [inedible].filter(Boolean)
+}
+
+export const translateBurgerName = ings => [
+  complete,
+  stacker,
+  light,
+  meatCounter,
+  meatOnly,
+  cheeseOnly,
+  veggie,
+  inedible
+].map((fn) => fn(ings)).join(' ')
